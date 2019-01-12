@@ -4,7 +4,7 @@
 [ext_resource path="res://sprites/wall.png" type="Texture" id=2]
 [ext_resource path="res://scripts/players.gd" type="Script" id=3]
 [ext_resource path="res://sprites/bar.png" type="Texture" id=4]
-[ext_resource path="res://scripts/ball.gd" type="Script" id=5]
+[ext_resource path="res://scripts/ball.cs" type="Script" id=5]
 [ext_resource path="res://sprites/ball.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -37,7 +37,7 @@ extents = Vector2( 10, 32 )
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="World" type="Node" index="0"]
+[node name="World" type="Node"]
 
 [node name="Walls" type="Node" parent="." index="0"]
 
@@ -222,7 +222,7 @@ texture = ExtResource( 4 )
 
 [node name="Ball" type="Node" parent="." index="2"]
 
-editor/display_folded = true
+script = ExtResource( 5 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="Ball" index="0"]
 
@@ -231,7 +231,6 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Ball/KinematicBody2D" index="0"]
 

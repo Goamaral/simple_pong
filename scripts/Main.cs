@@ -1,10 +1,12 @@
 using Godot;
 using System;
 
-public class main : Node {
+public class Main : Node {
   private Viewport root;
   private Dictionary<string, PackedScene> scenes = new Dictionary<string, PackedScene>();
   private string[] scene_names = { "Menu", "Game" };
+  public static int player1Score = 0;
+  public static int player2Score = 0;
 
   public override void _Ready() {
     root = GetTree().GetRoot();
@@ -24,7 +26,6 @@ public class main : Node {
     root.AddChild(scenes[scene_name].Instance());
   }
 
-  // Signals
   private void _on_Menu_start_game() {
     changeScene("Game");
   }

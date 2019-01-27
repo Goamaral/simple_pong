@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scripts/goal_walls.gd" type="Script" id=1]
+[ext_resource path="res://scripts/GoalWall.cs" type="Script" id=1]
 [ext_resource path="res://sprites/wall.png" type="Texture" id=2]
-[ext_resource path="res://scripts/players.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Player.cs" type="Script" id=3]
 [ext_resource path="res://sprites/bar.png" type="Texture" id=4]
-[ext_resource path="res://scripts/ball.cs" type="Script" id=5]
+[ext_resource path="res://scripts/Ball.cs" type="Script" id=5]
 [ext_resource path="res://sprites/ball.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -37,7 +37,7 @@ extents = Vector2( 10, 32 )
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="World" type="Node"]
+[node name="World" type="Node" index="0"]
 
 [node name="Walls" type="Node" parent="." index="0"]
 
@@ -180,7 +180,6 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-player_id = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Players/Player1" index="0"]
 
@@ -207,7 +206,6 @@ _sections_unfolded = [ "Pause" ]
 __meta__ = {
 "_edit_group_": true
 }
-player_id = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Players/Player2" index="0"]
 

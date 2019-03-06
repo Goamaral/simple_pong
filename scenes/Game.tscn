@@ -37,7 +37,7 @@ extents = Vector2( 10, 32 )
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="World" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 [node name="Walls" type="Node" parent="." index="0"]
 
@@ -180,6 +180,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+player_id = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Players/Player1" index="0"]
 
@@ -206,6 +207,7 @@ _sections_unfolded = [ "Pause" ]
 __meta__ = {
 "_edit_group_": true
 }
+player_id = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Players/Player2" index="0"]
 

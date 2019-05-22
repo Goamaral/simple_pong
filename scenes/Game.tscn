@@ -8,241 +8,155 @@
 [ext_resource path="res://sprites/ball.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
 extents = Vector2( 32, 34.0645 )
 
 [sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
 extents = Vector2( 23.9778, 33.0916 )
 
 [sub_resource type="RectangleShape2D" id=3]
-
-custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=4]
-
-custom_solver_bias = 0.0
 extents = Vector2( 32, 35 )
 
 [sub_resource type="RectangleShape2D" id=5]
-
-custom_solver_bias = 0.0
 extents = Vector2( 10, 32 )
 
 [sub_resource type="CircleShape2D" id=6]
 
-custom_solver_bias = 0.0
-radius = 10.0
-
 [node name="Game" type="Node"]
 
-[node name="Walls" type="Node" parent="." index="0"]
-
+[node name="Walls" type="Node" parent="."]
 editor/display_folded = true
 
-[node name="Right" type="Area2D" parent="Walls" index="0"]
-
+[node name="Right" type="Area2D" parent="Walls"]
 editor/display_folded = true
 position = Vector2( 1000, 312 )
 scale = Vector2( 0.75, 7.75 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
 position = Vector2( 0, -1.5 )
 scale = Vector2( 1, 0.95953 )
 shape = SubResource( 1 )
 
-[node name="SpriteRight" type="Sprite" parent="Walls/Right" index="1"]
-
+[node name="SpriteRight" type="Sprite" parent="Walls/Right"]
 position = Vector2( -1.57361, -1.12406 )
 rotation = 1.5708
 scale = Vector2( 4.89797, 4.07762 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 15.875, 16 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Left" type="Area2D" parent="Walls" index="1"]
-
+[node name="Left" type="Area2D" parent="Walls"]
 editor/display_folded = true
 position = Vector2( 24, 312 )
 scale = Vector2( 0.75, 7.75 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left"]
 position = Vector2( 2.59615, -1.52144 )
 scale = Vector2( 1.28239, 0.985989 )
 shape = SubResource( 2 )
 
-[node name="LeftSprite" type="Sprite" parent="Walls/Left" index="1"]
-
+[node name="LeftSprite" type="Sprite" parent="Walls/Left"]
 position = Vector2( 1.77362, -1.10644 )
 rotation = -1.5708
 scale = Vector2( 4.90097, 4.07762 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 15.875, 16 )
 
-[node name="Up" type="StaticBody2D" parent="Walls" index="2"]
-
+[node name="Up" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
 position = Vector2( 512, 24 )
 scale = Vector2( 14.5, 0.75 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Up" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Up"]
 position = Vector2( 3.328e-05, -3 )
 scale = Vector2( 2.2069, 1.84211 )
 shape = SubResource( 3 )
 
-[node name="SpriteUp" type="Sprite" parent="Walls/Up" index="1"]
-
+[node name="SpriteUp" type="Sprite" parent="Walls/Up"]
 position = Vector2( 3.8147e-06, 0 )
 scale = Vector2( 4.41379, 4 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Down" type="StaticBody2D" parent="Walls" index="3"]
-
+[node name="Down" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
 position = Vector2( 512, 584 )
 scale = Vector2( 16, 0.75 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Down" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Down"]
 position = Vector2( 0, 2.93571 )
 scale = Vector2( 1, 0.919361 )
 shape = SubResource( 4 )
 
-[node name="SpriteDown" type="Sprite" parent="Walls/Down" index="1"]
-
+[node name="SpriteDown" type="Sprite" parent="Walls/Down"]
 position = Vector2( 3.8147e-06, 0 )
 scale = Vector2( 4, -4 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Players" type="Node" parent="." index="1"]
+[node name="Players" type="Node" parent="."]
 
-[node name="Player1" type="KinematicBody2D" parent="Players" index="0"]
-
+[node name="Player1" type="KinematicBody2D" parent="Players"]
 editor/display_folded = true
 position = Vector2( 88, 128 )
 scale = Vector2( 0.25, 1.5 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-player_id = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Players/Player1" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Players/Player1"]
 position = Vector2( 3.14999, 0 )
 scale = Vector2( 2.70385, 1 )
 shape = SubResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="Players/Player1" index="1"]
-
+[node name="Sprite" type="Sprite" parent="Players/Player1"]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 
-[node name="Player2" type="KinematicBody2D" parent="Players" index="1"]
-
+[node name="Player2" type="KinematicBody2D" parent="Players"]
 editor/display_folded = true
 position = Vector2( 936, 128 )
 scale = Vector2( 0.25, 1.5 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
 script = ExtResource( 3 )
-_sections_unfolded = [ "Pause" ]
 __meta__ = {
 "_edit_group_": true
 }
-player_id = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Players/Player2" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Players/Player2"]
 position = Vector2( 3.14999, 0 )
 scale = Vector2( 2.70385, 1 )
 shape = SubResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="Players/Player2" index="1"]
-
+[node name="Sprite" type="Sprite" parent="Players/Player2"]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 
-[node name="Ball" type="Node" parent="." index="2"]
+[node name="Ball" type="Node" parent="."]
 
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Ball"]
+position = Vector2( 448, 192 )
 script = ExtResource( 5 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="Ball" index="0"]
-
-position = Vector2( 448, 192 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
-
-[node name="Sprite" type="Sprite" parent="Ball/KinematicBody2D" index="0"]
-
+[node name="Sprite" type="Sprite" parent="Ball/KinematicBody2D"]
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/KinematicBody2D" index="1"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/KinematicBody2D"]
 shape = SubResource( 6 )
 
 [connection signal="body_entered" from="Walls/Right" to="Walls/Right" method="_on_Right_body_entered"]
-
 [connection signal="body_entered" from="Walls/Left" to="Walls/Left" method="_on_Left_body_entered"]
-
-

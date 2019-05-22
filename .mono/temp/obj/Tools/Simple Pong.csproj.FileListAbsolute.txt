@@ -1,6 +1,0 @@
-/home/goa/Projects/simple_pong/.mono/temp/obj/Tools/Simple Pong.csprojResolveAssemblyReference.cache
-/home/goa/Projects/simple_pong/.mono/temp/obj/Tools/Simple Pong.csproj.CoreCompileInputs.cache
-/home/goa/Projects/simple_pong/.mono/temp/bin/Tools/Simple Pong.dll
-/home/goa/Projects/simple_pong/.mono/temp/bin/Tools/Simple Pong.pdb
-/home/goa/Projects/simple_pong/.mono/temp/obj/Tools/Simple Pong.dll
-/home/goa/Projects/simple_pong/.mono/temp/obj/Tools/Simple Pong.pdb

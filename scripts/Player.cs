@@ -3,6 +3,7 @@ using System;
 
 public class Player : KinematicBody2D {
   public int player_id = 0;
+  public int force = 400;
 
   public override void _Ready() {
     string[] path_parts = this.GetPath().ToString().Split("/");
@@ -14,9 +15,9 @@ public class Player : KinematicBody2D {
     bool is_down = Input.IsActionPressed(String.Format("player_{0}_down", player_id));
 
     if (is_up) {
-      MoveAndCollide(new Vector2(0, -5));
+      MoveAndCollide(new Vector2(0, -force) * delta);
     } else if(is_down) {
-      MoveAndCollide(new Vector2(0, 5));
+      MoveAndCollide(new Vector2(0, force) * delta);
     }
   }
 }

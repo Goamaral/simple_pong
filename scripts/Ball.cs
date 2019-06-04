@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public class Ball : KinematicBody2D {
-  private int inc = 10;
+  private int force = 10;
   private Vector2 v = new Vector2(300, 0);
 
   public override void _Ready() {
@@ -20,8 +20,8 @@ public class Ball : KinematicBody2D {
       float partial_x = Math.Abs(v.x) / 10;
       v.y += (float) new Random().NextDouble() * (2 * partial_x) - partial_x;
 
-      // if (collision.Collider.Get("name").Equals("Player1")) v.x += inc;
-      // if (collision.Collider.Get("name").Equals("Player2")) v.x -= inc;
+      if (collision.Collider.Get("name").Equals("Player1")) v.x += force;
+      if (collision.Collider.Get("name").Equals("Player2")) v.x -= force;
     }
   }
 

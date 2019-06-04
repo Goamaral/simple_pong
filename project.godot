@@ -47,8 +47,14 @@ player_2_down={
  ]
 }
 
+[physics]
+
+2d/thread_model=2
+
 [rendering]
 
+quality/driver/fallback_to_gles2=true
 quality/intended_usage/framebuffer_allocation=0
+threads/thread_model=2
 environment/default_clear_color=Color( 0.196078, 0.231373, 0.309804, 1 )
 environment/default_environment="res://default_env.tres"

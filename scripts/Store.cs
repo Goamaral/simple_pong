@@ -41,6 +41,6 @@ public class Store : Node {
   }
 
   public override void _Process(float delta) {
-    Godot.GD.Print(Godot.Engine.GetFramesPerSecond() + " FPS");
+    // Godot.GD.Print(Godot.Engine.GetFramesPerSecond() + " FPS");
   }
 }

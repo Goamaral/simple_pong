@@ -148,8 +148,11 @@ texture = ExtResource( 4 )
 [node name="Ball" type="Node" parent="."]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="Ball"]
-position = Vector2( 448, 192 )
+position = Vector2( 517, 214 )
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Ball/KinematicBody2D"]
 scale = Vector2( 1.25, 1.25 )

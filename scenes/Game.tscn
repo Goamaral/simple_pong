@@ -27,7 +27,6 @@ extents = Vector2( 10, 32 )
 [node name="Game" type="Node"]
 
 [node name="Walls" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Right" type="Area2D" parent="Walls"]
 editor/display_folded = true

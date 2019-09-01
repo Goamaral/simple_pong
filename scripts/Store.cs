@@ -2,12 +2,19 @@ using Godot;
 using System;
 
 public class Store : Node {
+  // PUBLIC
   public enum SceneType { Menu, Game, Scoreboard, Winner }
+  public enum Component { AudioPlayer, CurrentScene }
 
-  public static Node instance;
+  // PRIVATE
+
+  // PUBLIC STATIC
   public static int player1Score = 0;
   public static int player2Score = 0;
   public static int totalRounds = 5;
+
+  // PRIVATE STATUC
+  private static Store instance = null;
 
   // DATA METHODS
   public static string Score() {
@@ -29,6 +36,7 @@ public class Store : Node {
   // LIFECYCLE METHODS
   public override void _Ready() {
     Store.instance = this;
+    StartPlayer();
   }
 
   public override void _Process(float delta) {
@@ -55,14 +63,27 @@ public class Store : Node {
   }
 
   public void DeferredGotoScene(SceneType scene_type) {
-    Node current_scene = CurrentScene();
+    Node current_scene = Get(Component.CurrentScene);
     current_scene.Free();
     PackedScene next_scene = Scene(scene_type);
     current_scene = next_scene.Instance();
     this.AddChild(current_scene);
   }
 
-  public Node CurrentScene() {
-    return this.GetChild(this.GetChildCount() - 1);
+  public Node Get(Component component) {
+    return this.GetChild((int) component);
+  }
+
+  // PLAYER
+  public Godot.AudioStreamPlayer Player() {
+    return (Godot.AudioStreamPlayer) Get(Component.AudioPlayer);
+  }
+
+  public static void StartPlayer() {
+    instance.Player().Play();
+  }
+
+  public static void StopPlayer() {
+    instance.Player().Stop();
   }
 }

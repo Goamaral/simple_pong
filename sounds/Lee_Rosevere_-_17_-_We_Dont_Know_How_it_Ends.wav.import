@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Lee_Rosevere_-_17_-_We_Dont_Know_How_it_Ends.wav-c8b875230d3484d42a195c68d0d93aa6.sample"
+
+[deps]
+
+source_file="res://sounds/Lee_Rosevere_-_17_-_We_Dont_Know_How_it_Ends.wav"
+dest_files=[ "res://.import/Lee_Rosevere_-_17_-_We_Dont_Know_How_it_Ends.wav-c8b875230d3484d42a195c68d0d93aa6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

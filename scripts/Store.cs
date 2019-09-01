@@ -14,12 +14,11 @@ public class Store : Node {
     return player1Score + " - " + player2Score;
   }
 
-  public static int Winner() {
-    if (totalRounds % 2 == 0) totalRounds += 1;
-    
+  public static int Winner() {    
     if (player1Score + player2Score < totalRounds) return 0;
     if (player1Score > player2Score) return 1;
     if (player1Score < player2Score) return 2;
+    if (player1Score < player2Score) return 3;
     return 0;
   }
 
@@ -46,7 +45,13 @@ public class Store : Node {
   }
 
   public static void GotoScene(SceneType scene_type) {
-    instance.CallDeferred(nameof(DeferredGotoScene), scene_type);
+    int winner;
+
+    if (scene_type == SceneType.Scoreboard && (winner = Winner()) != 0) {
+      instance.CallDeferred(nameof(DeferredGotoScene), SceneType.Winner);
+    } else {
+      instance.CallDeferred(nameof(DeferredGotoScene), scene_type);
+    }
   }
 
   public void DeferredGotoScene(SceneType scene_type) {

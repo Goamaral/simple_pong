@@ -5,11 +5,7 @@ public class GoalWall : Area2D {
 
   // HELPER METHODS
   public void GoToNextScene() {
-    if (Store.Winner() == 0) {
-      Store.GotoScene(Store.SceneType.Scoreboard);
-    } else {
-      Store.GotoScene(Store.SceneType.Winner);
-    }
+    Store.GotoScene(Store.SceneType.Scoreboard);
   }
 
   // TRIGGER METHODS

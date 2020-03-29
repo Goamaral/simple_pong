@@ -1,5 +1,5 @@
 # Game/Scene.gd
-extends CanvasLayer
+extends Node
 
 # Export
 export var total_rounds: int

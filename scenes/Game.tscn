@@ -1,14 +1,15 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Game/Scene.gd" type="Script" id=1]
-[ext_resource path="res://sprites/wall.png" type="Texture" id=2]
-[ext_resource path="res://scripts/Game/Player.gd" type="Script" id=3]
-[ext_resource path="res://sprites/bar.png" type="Texture" id=4]
-[ext_resource path="res://scripts/Game/Ball.gd" type="Script" id=5]
-[ext_resource path="res://sprites/ball.png" type="Texture" id=6]
-[ext_resource path="res://fonts/roboto_64.tres" type="DynamicFont" id=7]
-[ext_resource path="res://fonts/roboto_48.tres" type="DynamicFont" id=8]
-[ext_resource path="res://fonts/roboto_32.tres" type="DynamicFont" id=9]
+[ext_resource path="res://scripts/Game/Pause.gd" type="Script" id=2]
+[ext_resource path="res://fonts/roboto_64.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/roboto_48.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/roboto_32.tres" type="DynamicFont" id=5]
+[ext_resource path="res://sprites/wall.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Game/Player.gd" type="Script" id=7]
+[ext_resource path="res://sprites/bar.png" type="Texture" id=8]
+[ext_resource path="res://scripts/Game/Ball.gd" type="Script" id=9]
+[ext_resource path="res://sprites/ball.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 34.0645 )
@@ -27,15 +28,87 @@ extents = Vector2( 10, 32 )
 
 [sub_resource type="CircleShape2D" id=6]
 
-[node name="Scene" type="CanvasLayer"]
+[node name="Game" type="Node"]
 script = ExtResource( 1 )
 total_rounds = 5
 
+[node name="Pause" type="Control" parent="."]
+pause_mode = 2
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Overlay" type="ColorRect" parent="Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.352941 )
+
+[node name="Scoreboard" type="Control" parent="."]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="Label" parent="Scoreboard"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -512.0
+margin_top = 96.0
+margin_right = 512.0
+margin_bottom = 192.0
+custom_fonts/font = ExtResource( 3 )
+text = "Scoreboard"
+align = 1
+valign = 1
+
+[node name="Value" type="Label" parent="Scoreboard"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -512.0
+margin_top = 256.0
+margin_right = 512.0
+margin_bottom = 352.0
+custom_fonts/font = ExtResource( 4 )
+text = "scoreboard_value"
+align = 1
+valign = 1
+
+[node name="NextRound" type="Button" parent="Scoreboard"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -160.0
+margin_top = 448.0
+margin_right = 160.0
+margin_bottom = 512.0
+custom_fonts/font = ExtResource( 5 )
+text = "Next Round"
+
+[node name="Winner" type="Control" parent="."]
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Value" type="Label" parent="Winner"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -304.0
+margin_right = 512.0
+margin_bottom = 304.0
+custom_fonts/font = ExtResource( 3 )
+text = "winner_value"
+align = 1
+valign = 1
+
 [node name="World" type="Control" parent="."]
 editor/display_folded = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Walls" type="Node2D" parent="World"]
 
@@ -56,7 +129,7 @@ shape = SubResource( 1 )
 position = Vector2( -1.57361, -1.12406 )
 rotation = 1.5708
 scale = Vector2( 4.89797, 4.07762 )
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 15.875, 16 )
 
 [node name="Left" type="Area2D" parent="World/Walls"]
@@ -76,7 +149,7 @@ shape = SubResource( 2 )
 position = Vector2( 1.77362, -1.10644 )
 rotation = -1.5708
 scale = Vector2( 4.90097, 4.07762 )
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 15.875, 16 )
 
 [node name="Up" type="StaticBody2D" parent="World/Walls"]
@@ -95,7 +168,7 @@ shape = SubResource( 3 )
 [node name="SpriteUp" type="Sprite" parent="World/Walls/Up"]
 position = Vector2( 3.8147e-06, 0 )
 scale = Vector2( 4.41379, 4 )
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 
 [node name="Down" type="StaticBody2D" parent="World/Walls"]
 editor/display_folded = true
@@ -113,14 +186,14 @@ shape = SubResource( 4 )
 [node name="SpriteDown" type="Sprite" parent="World/Walls/Down"]
 position = Vector2( 3.8147e-06, 0 )
 scale = Vector2( 4, -4 )
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 
 [node name="Players" type="Node2D" parent="World"]
 
 [node name="LeftPlayer" type="KinematicBody2D" parent="World/Players"]
 position = Vector2( 88, 128 )
 scale = Vector2( 0.25, 1.5 )
-script = ExtResource( 3 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -133,13 +206,13 @@ shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="World/Players/LeftPlayer"]
 scale = Vector2( 4, 4 )
-texture = ExtResource( 4 )
+texture = ExtResource( 8 )
 
 [node name="RightPlayer" type="KinematicBody2D" parent="World/Players"]
 editor/display_folded = true
 position = Vector2( 936, 128 )
 scale = Vector2( 0.25, 1.5 )
-script = ExtResource( 3 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -152,88 +225,22 @@ shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="World/Players/RightPlayer"]
 scale = Vector2( 4, 4 )
-texture = ExtResource( 4 )
+texture = ExtResource( 8 )
 
 [node name="Ball" type="KinematicBody2D" parent="World"]
 position = Vector2( 517, 214 )
-script = ExtResource( 5 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="World/Ball"]
 scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 6 )
+texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ball"]
 shape = SubResource( 6 )
 
-[node name="Scoreboard" type="Control" parent="."]
-editor/display_folded = true
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Title" type="Label" parent="Scoreboard"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -512.0
-margin_top = 96.0
-margin_right = 512.0
-margin_bottom = 192.0
-custom_fonts/font = ExtResource( 7 )
-text = "Scoreboard"
-align = 1
-valign = 1
-
-[node name="Value" type="Label" parent="Scoreboard"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -512.0
-margin_top = 256.0
-margin_right = 512.0
-margin_bottom = 352.0
-custom_fonts/font = ExtResource( 8 )
-text = "scoreboard_value"
-align = 1
-valign = 1
-
-[node name="NextRound" type="Button" parent="Scoreboard"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -160.0
-margin_top = 448.0
-margin_right = 160.0
-margin_bottom = 512.0
-custom_fonts/font = ExtResource( 9 )
-text = "Next Round"
-
-[node name="Winner" type="Control" parent="."]
-editor/display_folded = true
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Value" type="Label" parent="Winner"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -304.0
-margin_right = 512.0
-margin_bottom = 304.0
-custom_fonts/font = ExtResource( 7 )
-text = "winner_value"
-align = 1
-valign = 1
-
+[connection signal="pressed" from="Scoreboard/NextRound" to="." method="_on_NextRound_pressed"]
 [connection signal="body_entered" from="World/Walls/Right" to="." method="_on_goal" binds= [ "left_player" ]]
 [connection signal="body_entered" from="World/Walls/Left" to="." method="_on_goal" binds= [ "right_player" ]]
-[connection signal="pressed" from="Scoreboard/NextRound" to="." method="_on_NextRound_pressed"]

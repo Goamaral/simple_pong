@@ -7,6 +7,7 @@ export var default_vector = Vector2(300, 0)
 
 # Private
 var vector: Vector2 = default_vector
+var ready: bool = false
 onready var default_position: Vector2 = position
 
 # World player nodes
@@ -18,7 +19,15 @@ func _ready():
 	if Utils.randi_range(0, 2) % 2 == 1:
 		vector.x *= -1
 
+	return SceneChanger.connect("scene_changed", self, "set_ready")
+	
+func set_ready():
+	ready = true
+
 func _process(delta: float):
+	if (!ready):
+		return false
+	
 	var collision: KinematicCollision2D = move_and_collide(vector * delta)
 	
 	if (collision != null):
@@ -32,7 +41,7 @@ func _process(delta: float):
 
 		if collision.collider == right_player_node:
 			vector.x -= force
-			
+
 # General
 func reset():
 	position = default_position

@@ -68,7 +68,7 @@ func show_winner() -> void:
 
 	update_current_node(winner_node)
 	yield(get_tree().create_timer(winner_hold_time), "timeout")
-	Utils.change_scene("MainMenu")
+	SceneChanger.change_scene("MainMenu")
 
 # General
 func next_game_state() -> int:

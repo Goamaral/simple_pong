@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node
 
 func _on_play():
-	Utils.change_scene("Game")
+	SceneChanger.change_scene("Game")

@@ -28,13 +28,12 @@ extents = Vector2( 10, 32 )
 
 [sub_resource type="CircleShape2D" id=6]
 
-[node name="Game" type="Node"]
+[node name="Scene" type="CanvasLayer"]
 script = ExtResource( 1 )
 total_rounds = 5
 
 [node name="Pause" type="Control" parent="."]
 pause_mode = 2
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -111,6 +110,7 @@ valign = 1
 editor/display_folded = true
 
 [node name="Walls" type="Node2D" parent="World"]
+editor/display_folded = true
 
 [node name="Right" type="Area2D" parent="World/Walls"]
 editor/display_folded = true
@@ -189,6 +189,7 @@ scale = Vector2( 4, -4 )
 texture = ExtResource( 6 )
 
 [node name="Players" type="Node2D" parent="World"]
+editor/display_folded = true
 
 [node name="LeftPlayer" type="KinematicBody2D" parent="World/Players"]
 position = Vector2( 88, 128 )

@@ -10,3 +10,7 @@ func _input(event):
 func _on_ContinueButton_pressed():
 	get_tree().paused = false
 	menu_node.visible = false
+
+func _on_MainMenuButton_pressed():
+	SceneChanger.change_scene("MainMenu")
+	get_tree().paused = false

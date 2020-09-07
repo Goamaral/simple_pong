@@ -42,6 +42,10 @@ func _on_NextRound_pressed():
 	world_node_left_player.reset()
 	world_node_right_player.reset()
 	update_current_node(world_node)
+	
+func _input(event):
+	if event.is_action_pressed("ui_accept") and current_node == scoreboard_node:
+		_on_NextRound_pressed()
 
 # Displayers
 func hide_all_main_nodes() -> void:
@@ -76,4 +80,3 @@ func next_game_state() -> int:
 		return END
 	else:
 		return CONTINUE
-

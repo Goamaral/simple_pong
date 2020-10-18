@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Game/Scene.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Game/Pause.gd" type="Script" id=2]
 [ext_resource path="res://fonts/roboto_64.tres" type="DynamicFont" id=3]
 [ext_resource path="res://fonts/roboto_32.tres" type="DynamicFont" id=4]
 [ext_resource path="res://fonts/roboto_48.tres" type="DynamicFont" id=5]
-[ext_resource path="res://sprites/wall.png" type="Texture" id=6]
-[ext_resource path="res://scripts/Game/Player.gd" type="Script" id=7]
-[ext_resource path="res://sprites/bar.png" type="Texture" id=8]
-[ext_resource path="res://scripts/Game/Ball.gd" type="Script" id=9]
-[ext_resource path="res://sprites/ball.png" type="Texture" id=10]
+[ext_resource path="res://scripts/Game/World.gd" type="Script" id=6]
+[ext_resource path="res://sprites/wall.png" type="Texture" id=7]
+[ext_resource path="res://scripts/Game/Player.gd" type="Script" id=8]
+[ext_resource path="res://sprites/bar.png" type="Texture" id=9]
+[ext_resource path="res://scripts/Game/Ball.gd" type="Script" id=10]
+[ext_resource path="res://sprites/ball.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 34.0645 )
@@ -145,7 +146,7 @@ align = 1
 valign = 1
 
 [node name="World" type="Control" parent="."]
-editor/display_folded = true
+script = ExtResource( 6 )
 
 [node name="Walls" type="Node2D" parent="World"]
 
@@ -166,7 +167,7 @@ shape = SubResource( 1 )
 position = Vector2( -1.57361, -1.12406 )
 rotation = 1.5708
 scale = Vector2( 4.89797, 4.07762 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 15.875, 16 )
 
 [node name="Left" type="Area2D" parent="World/Walls"]
@@ -186,7 +187,7 @@ shape = SubResource( 2 )
 position = Vector2( 1.77362, -1.10644 )
 rotation = -1.5708
 scale = Vector2( 4.90097, 4.07762 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 15.875, 16 )
 
 [node name="Up" type="StaticBody2D" parent="World/Walls"]
@@ -205,7 +206,7 @@ shape = SubResource( 3 )
 [node name="SpriteUp" type="Sprite" parent="World/Walls/Up"]
 position = Vector2( 3.8147e-06, 0 )
 scale = Vector2( 4.41379, 4 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="Down" type="StaticBody2D" parent="World/Walls"]
 editor/display_folded = true
@@ -223,15 +224,14 @@ shape = SubResource( 4 )
 [node name="SpriteDown" type="Sprite" parent="World/Walls/Down"]
 position = Vector2( 3.8147e-06, 0 )
 scale = Vector2( 4, -4 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="Players" type="Node2D" parent="World"]
-editor/display_folded = true
 
 [node name="LeftPlayer" type="KinematicBody2D" parent="World/Players"]
 position = Vector2( 88, 128 )
 scale = Vector2( 0.25, 1.5 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -244,13 +244,13 @@ shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="World/Players/LeftPlayer"]
 scale = Vector2( 4, 4 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="RightPlayer" type="KinematicBody2D" parent="World/Players"]
 editor/display_folded = true
 position = Vector2( 936, 128 )
 scale = Vector2( 0.25, 1.5 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -263,18 +263,18 @@ shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="World/Players/RightPlayer"]
 scale = Vector2( 4, 4 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="Ball" type="KinematicBody2D" parent="World"]
 position = Vector2( 517, 214 )
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="World/Ball"]
 scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ball"]
 shape = SubResource( 6 )

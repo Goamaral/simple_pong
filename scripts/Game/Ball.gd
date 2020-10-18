@@ -7,25 +7,32 @@ export var default_vector = Vector2(300, 0)
 
 # Private
 var vector: Vector2 = default_vector
-var ready: bool = false
+var paused: bool = true
 onready var default_position: Vector2 = position
 
 # World player nodes
 onready var left_player_node = $"../Players/LeftPlayer"
 onready var right_player_node = $"../Players/RightPlayer"
+onready var world_node = $"/root/Scene/World"
 
 # Signal Handling
 func _ready():
 	if Utils.randi_range(0, 2) % 2 == 1:
 		vector.x *= -1
 
-	return SceneChanger.connect("scene_changed", self, "set_ready")
+	#warning-ignore:return_value_discarded
+	world_node.connect("pause", self, "_pause")
+	#warning-ignore:return_value_discarded
+	world_node.connect("resume", self, "_resume")
 	
-func set_ready():
-	ready = true
+func _resume():
+	paused = false
+	
+func _pause():
+	paused = true
 
 func _process(delta: float):
-	if (!ready):
+	if (paused):
 		return false
 	
 	var collision: KinematicCollision2D = move_and_collide(vector * delta)
